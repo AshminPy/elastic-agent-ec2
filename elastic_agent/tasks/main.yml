@@ -1,0 +1,25 @@
+---
+- name: Download Elastic Agent
+  get_url:
+    url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.16.1-amd64.deb"
+    dest: /tmp/elastic-agent.deb
+
+- name: Install Elastic Agent
+  become: true
+  apt:
+    deb: /tmp/elastic-agent.deb
+    state: present
+
+- name: Start Elastic Agent
+  become: true
+  systemd:
+    name: elastic-agent
+    state: started
+
+- name: Check Elastic Agent status
+  become: true
+  command: systemctl status elastic-agent
+  register: result
+  changed_when: false
+
+- debug: var=result.stdout_lines

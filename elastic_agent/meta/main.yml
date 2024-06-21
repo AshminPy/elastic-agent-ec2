@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Ash
+  description: Role to install Elastic Agent
+  license: license (e.g., MIT)
+  min_ansible_version: 2.4.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+    - bionic
+    - focal
+  galaxy_tags:
+    - elastic
+    - agent
+dependencies: []
